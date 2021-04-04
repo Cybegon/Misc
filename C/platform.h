@@ -13,7 +13,7 @@
 #   endif
 #endif
 
-#if !defined(CYBEGON_COMPILER_GCC) && !defined(CYBEGON_COMPILER_MSVC)
+#if !defined(CYBEGON_COMPILER_GCC) && !defined(CYBEGON_COMPILER_MSVC) && !defined(CYBEGON_COMPILER_CLANG)
 #   if defined(__clang__)
 #       define CYBEGON_COMPILER_CLANG
 #   elif defined(__MINGW32__) || defined(__MINGW64__)
