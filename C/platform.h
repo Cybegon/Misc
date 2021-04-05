@@ -1,5 +1,5 @@
-#ifndef CTL_PLATFORM_H
-#define CTL_PLATFORM_H
+#ifndef _PLATFORM_H
+#define _PLATFORM_H
 
 // If the build system not defined macros
 // we try to get them using pre-processor methods
@@ -49,4 +49,4 @@
 #   endif
 #endif
 
-#endif //CTL_PLATFORM_H
+#endif // _PLATFORM_H
