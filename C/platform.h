@@ -1,5 +1,5 @@
-#ifndef _PLATFORM_H
-#define _PLATFORM_H
+#ifndef UCRT_PLATFORM_H
+#define UCRT_PLATFORM_H
 
 // If the build system not defined macros
 // we try to get them using pre-processor methods
@@ -13,40 +13,42 @@
 #   endif
 #endif
 
-#if !defined(CYBEGON_COMPILER_GCC) && !defined(CYBEGON_COMPILER_MSVC) && !defined(CYBEGON_COMPILER_CLANG)
+#if !defined(UCRT_COMPILER_DEFINED)
+#   define UCRT_COMPILER_DEFINED
 #   if defined(__clang__)
-#       define CYBEGON_COMPILER_CLANG
+#       define UCRT_COMPILER_CLANG
 #   elif defined(__MINGW32__) || defined(__MINGW64__)
-#       define CYBEGON_COMPILER_MINGW
-#       define CYBEGON_COMPILER_GCC
+#       define UCRT_COMPILER_MINGW
+#       define UCRT_COMPILER_GCC
 #   elif defined(__GNUC__) || defined(__GNUG__)
-#       define CYBEGON_COMPILER_GCC
+#       define UCRT_COMPILER_GCC
 #   elif defined(_MSC_VER)
-#       define CYBEGON_COMPILER_MSVC
+#       define UCRT_COMPILER_MSVC
 #   else
+#       undef UCRT_COMPILER_DEFINED
 #       error Unsupported compiler
 #   endif
 #endif
 
-#if !defined(CYBEGON_PLATFORM_WINDOWS) || !defined(CYBEGON_PLATFORM_UNIX)
+#if !defined(UCRT_PLATFORM_WINDOWS) || !defined(UCRT_PLATFORM_UNIX)
 #   if defined(_WIN32) || defined(_WIN64)
-#       define CYBEGON_PLATFORM_WINDOWS
+#       define UCRT_PLATFORM_WINDOWS
 #   elif defined(unix) || defined(__unix__) || defined(__unix)
-#       define CYBEGON_PLATFORM_UNIX
+#       define UCRT_PLATFORM_UNIX
 #       if defined(__linux__)
-#           define CYBEGON_PLATFORM_LINUX
+#           define UCRT_PLATFORM_LINUX
 #       elif defined(__APPLE__)
-#           define CYBEGON_PLATFORM_APPLE
+#           define UCRT_PLATFORM_APPLE
 #       elif defined(__ANDROID__)
-#           define CYBEGON_PLATFORM_ANDROID
+#           define UCRT_PLATFORM_ANDROID
 #       elif defined(__FreeBSD__)
-#           define CYBEGON_PLATFORM_FREEBSD
+#           define UCRT_PLATFORM_FREEBSD
 #       elif defined(__OpenBSD__)
-#           define CYBEGON_PLATFORM_OPENBSD
+#           define UCRT_PLATFORM_OPENBSD
 #       endif
 #   else
 #       error Unsupported platform
 #   endif
 #endif
 
-#endif // _PLATFORM_H
+#endif // UCRT_PLATFORM_H
